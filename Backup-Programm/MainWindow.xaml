@@ -1,0 +1,69 @@
+﻿<Window x:Class="Backup_Programm.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Backup_Programm"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="10">
+        <!-- Grid Definition anpassen -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Neues Grid für die Buttons in Zeile 0 -->
+        <!-- Grid Definition anpassen für 3 Spalten -->
+        <Grid Grid.Row="0" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Lesezeichen Button -->
+            <Button Grid.Column="0" 
+                    Content="Lesezeichen Aufräumen" 
+                    Command="{Binding OpenBookmarksCommand}" 
+                    Height="40" 
+                    FontWeight="Bold" 
+                    FontSize="14"/>
+
+            <!-- Normales Backup Button -->
+            <Button Grid.Column="2" 
+                    Content="Backup erstellen" 
+                    Command="{Binding StartBackupCommand}" 
+                    Height="40" 
+                    FontWeight="Bold" 
+                    FontSize="14"/>
+
+            <!-- Neuer Archivieren Button -->
+            <Button Grid.Column="4" 
+                    Content="Als .7z Archivieren" 
+                    Command="{Binding StartArchiveCommand}" 
+                    Height="40" 
+                    FontWeight="Bold" 
+                    FontSize="14"/>
+
+            <!-- Inkrementelles Archivieren Button -->
+            <Button Grid.Column="6" 
+                    Content="Inkrementell Archivieren" 
+                    Command="{Binding StartIncrementalCommand}" 
+                    Height="40" 
+                    FontWeight="Bold" 
+                    FontSize="14"/>
+        </Grid>
+        <!-- Hier wurde x:Name="LogListBox" hinzugefügt -->
+        <ListBox x:Name="LogListBox"
+                 Grid.Row="1" 
+                 ItemsSource="{Binding LogMessages}" 
+                 FontFamily="Consolas" 
+                 Background="#1E1E1E" 
+                 Foreground="#D4D4D4"/>
+    </Grid>
+</Window>
